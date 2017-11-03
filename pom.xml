@@ -7,13 +7,7 @@
     <groupId>uk.co.paulcodes</groupId>
     <artifactId>projecte</artifactId>
     <version>0.4-PreAlpha</version>
-    <packaging>jar</packaging>
     <name>Project-E</name>
-
-    <properties>
-        <project.mainClass>uk.co.paulcodes.projecte.Main</project.mainClass>
-        <project.author>PaulCodesUK</project.author>
-    </properties>
 
     <dependencies>
         <!-- Jedis -->
@@ -39,18 +33,27 @@
         </resources>
 
         <finalName>${project.name}</finalName>
-        <defaultGoal>clean install</defaultGoal>
         <!-- Plugins -->
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <mainClass>uk.co.paulcodes.projecte.Main</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.4</version>
+                <version>3.2</version>
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
-                    <showWarnings>true</showWarnings>
-                    <showDeprecation>false</showDeprecation>
                 </configuration>
             </plugin>
             <plugin>
@@ -75,5 +78,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>
